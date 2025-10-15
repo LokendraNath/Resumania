@@ -1,5 +1,6 @@
 import User from "../modals/userModal.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 // Create Token JWT
 const generateToken = (userId) => {
@@ -31,7 +32,7 @@ export const registerUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
-    res.send(500).json({ message: "Server Error", error: error.message });
+    res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
 
@@ -44,7 +45,7 @@ export const loginUser = async (req, res) => {
     }
 
     // Check Password
-    const isMatch = await bcrypt.compare(password, user._id);
+    const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(500).json({ message: "Invalid Email or Password" });
     }
@@ -61,7 +62,7 @@ export const loginUser = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
   try {
-    const user = await User.findOne(req.user.id).select("-password");
+    const user = await User.findById(req.user.id).select("-password");
     if (!user) {
       return res.status(500).json({ message: "User Not Found" });
     }
