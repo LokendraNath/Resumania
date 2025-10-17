@@ -1,4 +1,4 @@
-import Resume from "../modals/resumeModle";
+import Resume from "../modals/resumeModle.js";
 import fs from "fs";
 import path from "path";
 
@@ -72,7 +72,7 @@ export const createResume = async (req, res) => {
     const newResume = await Resume.create({
       userId: req.user._id,
       title,
-      ...defaultResumeData,
+      ...structuredClone(defaultResumeData),
       ...req.body,
     });
     res.status(201).json(newResume);
