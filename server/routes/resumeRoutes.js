@@ -9,15 +9,15 @@ import {
 } from "../controllers/resumeControllers.js";
 import { uploadResumeImage } from "../controllers/uploadImages.js";
 
-const resumeRouter = express.Router();
+const resumeRouts = express.Router();
 
-resumeRouter.post("/", protect, createResume);
-resumeRouter.get("/", protect, getUserResumes);
-resumeRouter.get("/:id", protect, getResumeById);
+resumeRouts.post("/", protect, createResume);
+resumeRouts.get("/", protect, getUserResumes);
+resumeRouts.get("/:id", protect, getResumeById);
 
-resumeRouter.put("/:id", protect, updatedResume);
-resumeRouter.put("/:id/upload-images", protect, uploadResumeImage);
+resumeRouts.put("/:id", protect, updatedResume);
+resumeRouts.put("/:id/upload-images", protect, uploadResumeImage);
 
-resumeRouter.delete("/:id", protect, deleteResume);
+resumeRouts.delete("/:id", protect, deleteResume);
 
-export default resumeRouter;
+export default resumeRouts;
