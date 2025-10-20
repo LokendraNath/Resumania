@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const landingPageStyles = {
   // Main container
   container:
     "min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50",
 
-  // Header styles
+  // Header stylesexport const UserContext = createContext(null);
   header:
     "fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-violet-100/50",
   headerContainer:
@@ -481,7 +480,7 @@ export const inputStyles = {
   wrapper: "mb-6 group",
   label:
     "block text-sm font-bold text-gray-800 mb-3 group-focus-within:text-violet-600 transition-colors",
-  inputContainer: (focused: any) =>
+  inputContainer: (focused) =>
     `relative flex items-center bg-gray-50 border-2 px-4 py-3 rounded-xl transition-all duration-300 ${
       focused
         ? "border-violet-500 ring-4 ring-violet-500/20 shadow-lg shadow-violet-500/10"
@@ -496,14 +495,14 @@ export const inputStyles = {
 export const photoSelectorStyles = {
   container: "flex justify-center mb-8",
   hiddenInput: "hidden",
-  placeholder: (hovered: any) =>
+  placeholder: (hovered) =>
     `relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center bg-gray-50 border-2 border-dashed border-gray-300 rounded-full cursor-pointer transition-all duration-300 ${
       hovered ? "hover:border-violet-500 hover:bg-violet-50" : ""
     }`,
   cameraButton:
     "absolute -bottom-2 -right-2 w-12 h-12 flex items-center justify-center bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full transition-all shadow-lg hover:scale-110",
   previewWrapper: "relative group",
-  previewImageContainer: (hovered: any) =>
+  previewImageContainer: (hovered) =>
     `w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg transition-all duration-300 ${
       hovered ? "group-hover:border-violet-400" : ""
     }`,
@@ -511,7 +510,7 @@ export const photoSelectorStyles = {
     "w-full h-full object-cover cursor-pointer group-hover:scale-110 transition-transform duration-300",
   overlay:
     "absolute inset-0 bg-black/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center",
-  actionButton: (bg: any, hoverBg: any, textColor: any) =>
+  actionButton: (bg, hoverBg, textColor) =>
     `w-10 h-10 flex items-center justify-center bg-${bg} text-${textColor} rounded-full hover:bg-${hoverBg} transition-all`,
 };
 
@@ -522,7 +521,7 @@ export const titleInputStyles = {
     "p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all group",
   editIcon:
     "w-5 h-5 text-gray-600 group-hover:text-violet-600 transition-colors",
-  inputField: (focused: any) =>
+  inputField: (focused) =>
     `text-lg sm:text-xl font-bold bg-transparent outline-none text-gray-800 border-b-2 pb-2 transition-all duration-300 ${
       focused ? "border-violet-500" : "border-gray-300"
     }`,
@@ -583,7 +582,7 @@ export const infoStyles = {
 
   // ProjectInfo
   projectContainer: "mb-5",
-  projectTitle: (isPreview: any) =>
+  projectTitle: (isPreview) =>
     `${isPreview ? "text-sm" : "text-base"} font-semibold text-gray-900`,
   projectDesc: "text-sm text-gray-600 mt-1 leading-relaxed",
   projectLinks: "flex items-center gap-4 font-medium mt-3",
