@@ -398,6 +398,74 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Feature Section */}
+        <section className={landingPageStyles.featuresSection}>
+          <div className={landingPageStyles.featuresContainer}>
+            <div className={landingPageStyles.featuresHeader}>
+              <h2 className={landingPageStyles.featuresTitle}>
+                Why{" "}
+                <span className={landingPageStyles.featuresTitleGradient}>
+                  Resumania
+                </span>{" "}
+                Is Your Best Choice
+              </h2>
+              <p className={landingPageStyles.featuresDescription}>
+                Get noticed faster with powerful, sleek, and modern resume
+                templates.
+              </p>
+            </div>
+            <div className={landingPageStyles.featuresGrid}>
+              {[
+                {
+                  icon: <Zap className={landingPageStyles.featureIcon} />,
+                  title: "Lightning Fast",
+                  description:
+                    "Create professional resumes in under 5 minutes with our streamlined process",
+                  gradient: landingPageStyles.featureIconViolet,
+                  bg: landingPageStyles.featureCardViolet,
+                },
+                {
+                  icon: (
+                    <LayoutTemplate className={landingPageStyles.featureIcon} />
+                  ),
+                  title: "Pro Templates",
+                  description:
+                    "Choose from dozens of recruiter-approved, industry-specific templates",
+                  gradient: landingPageStyles.featureIconFuchsia,
+                  bg: landingPageStyles.featureCardFuchsia,
+                },
+                {
+                  icon: <Download className={landingPageStyles.featureIcon} />,
+                  title: "Instant Export",
+                  description:
+                    "Download high-quality PDFs instantly with perfect formatting",
+                  gradient: landingPageStyles.featureIconOrange,
+                  bg: landingPageStyles.featureCardOrange,
+                },
+              ].map((feature, index) => (
+                <div key={index} className={landingPageStyles.featureCard}>
+                  <div className={landingPageStyles.featureCardHover}></div>
+                  <div
+                    className={`${landingPageStyles.featureCardContent} ${feature.bg}`}
+                  >
+                    <div
+                      className={`${landingPageStyles.featureIconContainer} ${feature.gradient}`}
+                    >
+                      {feature.icon}
+                    </div>
+                    <h3 className={landingPageStyles.featureTitle}>
+                      {feature.title}
+                    </h3>
+                    <p className={landingPageStyles.featureDescription}>
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
