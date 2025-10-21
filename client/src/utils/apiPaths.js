@@ -11,11 +11,11 @@ export const API_PATHS = {
   RESUME: {
     CREATE: "/api/resume",
     GET_ALL: "/api/resume",
-    GET_BY_ID: (id: any) => `/api/resume/${id}`,
+    GET_BY_ID: (id) => `/api/resume/${id}`,
 
-    UPDATE: (id: any) => `/api/resume/${id}`,
-    DELETE: (id: any) => `/api/resume/${id}`,
-    UPLOAD_IMAGES: (id: any) => `/api/resume/${id}`,
+    UPDATE: (id) => `/api/resume/${id}`,
+    DELETE: (id) => `/api/resume/${id}`,
+    UPLOAD_IMAGES: (id) => `/api/resume/${id}`,
   },
   IMAGE: {
     UPLOAD_IMAGE: "/api/auth/upload-image",

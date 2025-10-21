@@ -15,7 +15,7 @@ export const landingPageStyles = {
   logoText:
     "text-xl sm:text-2xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent",
   mobileMenuButton:
-    "md:hidden p-2 rounded-xl hover:bg-violet-50 transition-colors",
+    "md:hidden p-2 rounded-xl hover:bg-blue-50 transition-colors",
   mobileMenuIcon: "text-blue-600",
 
   // Auth buttons
@@ -23,7 +23,7 @@ export const landingPageStyles = {
     "relative group px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-200",
   desktopAuthButtonText: "relative",
   desktopAuthButtonOverlay:
-    "absolute inset-0 bg-gradient-to-r from-fuchsia-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity",
+    "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity",
 
   // Mobile menu
   // Mobile menu
@@ -45,13 +45,13 @@ export const landingPageStyles = {
   // Hero section
   heroSection: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20",
   heroGrid: "flex flex-wrap justify-between gap-10 lg:gap-12 items-center",
-  heroLeft: "space-y-8",
+  heroLeft: "space-y-4",
   tagline:
-    "inline-flex items-center gap-2 sm:gap-3 px-4 py-2 bg-gradient-to-r from-violet-100 to-fuchsia-100 border border-violet-200 text-violet-700 rounded-full font-bold text-xs sm:text-sm",
+    "inline-flex items-center gap-2 sm:gap-3 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 text-blue-700 rounded-full font-bold text-xs sm:text-sm",
   heading: "text-4xl sm:text-6xl lg:text-8xl font-black leading-tight",
   headingText: "block text-slate-900",
   headingGradient:
-    "block bg-gradient-to-r from-blue-600 via-fuchsia-600 to-orange-500 bg-clip-text text-transparent",
+    "block bg-gradient-to-r from-blue-600 via-cyan-600 to-violet-500 bg-clip-text text-transparent",
   description:
     "text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-lg font-medium",
   ctaButtons: "flex flex-col sm:flex-row gap-4",
