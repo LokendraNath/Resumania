@@ -45,26 +45,26 @@ export const landingPageStyles = {
   // Hero section
   heroSection: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20",
   heroGrid: "flex flex-wrap justify-between gap-10 lg:gap-12 items-center",
-  heroLeft: "space-y-4",
+  heroLeft: "space-y-2",
   tagline:
     "inline-flex items-center gap-2 sm:gap-3 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 text-blue-700 rounded-full font-bold text-xs sm:text-sm",
-  heading: "text-4xl sm:text-6xl lg:text-8xl font-black leading-tight",
+  heading: "text-3xl sm:text-5xl lg:text-7xl font-black leading-tight",
   headingText: "block text-slate-900",
   headingGradient:
     "block bg-gradient-to-r from-blue-600 via-cyan-600 to-violet-500 bg-clip-text text-transparent",
   description:
-    "text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-lg font-medium",
-  ctaButtons: "flex flex-col sm:flex-row gap-4",
+    "text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-lg font-medium mb-5",
+  ctaButtons: "flex flex-col sm:flex-row gap-10",
 
   // Buttons
   primaryButton:
     "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-violet-200",
   primaryButtonOverlay:
-    "absolute inset-0 bg-gradient-to-r from-fuchsia-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity",
+    "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity",
   primaryButtonContent: "relative flex items-center gap-2 sm:gap-3",
   primaryButtonIcon: "group-hover:translate-x-1 transition-transform",
   secondaryButton:
-    "px-8 sm:px-10 py-3 sm:py-4 border-2 border-violet-200 text-violet-700 font-bold rounded-2xl hover:border-violet-300 hover:bg-violet-50 transition-all",
+    "px-8 sm:px-10 py-3 sm:py-4 border-2 border-blue-500 text-blue-500 font-bold rounded-2xl hover:bg-blue-50 transition-all",
 
   // Stats
   statsContainer:
@@ -77,24 +77,29 @@ export const landingPageStyles = {
   // Hero illustration
   heroIllustration: "relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto",
   heroIllustrationBg:
-    "absolute -inset-8 bg-gradient-to-r from-violet-200/50 to-fuchsia-200/50 rounded-3xl blur-3xl",
+    "absolute -inset-8 bg-gradient-to-r from-blue-200/50 to-cyan-200/50 rounded-3xl blur-3xl",
   heroIllustrationContainer: "relative",
 
   // SVG styles
   svgContainer: "w-full h-auto max-w-md mx-auto",
-  svgRect: "fill-[url(#cardGradient)] stroke-[#e2e8f0] stroke-[2]",
+
+  // Background / Card elements
+  svgRect: "fill-[url(#cardGradient)] stroke-[#0ea5e9] stroke-[2]", // cyan stroke
   svgCircle: "fill-[url(#bgGradient)]",
-  svgRectPrimary: "fill-[#8b5cf6]",
-  svgRectSecondary: "fill-[#d946ef]",
-  svgRectLight: "fill-[#e2e8f0]",
-  svgRectSkill: "fill-[#ddd6fe]",
-  svgAnimatedCircle: "fill-[#f97316] opacity-80",
-  svgAnimatedRect: "fill-[#10b981] opacity-80",
-  svgAnimatedPolygon: "fill-[#ef4444] opacity-80",
+
+  // Main Rectangles
+  svgRectPrimary: "fill-[#3b82f6]", // blue
+  svgRectSecondary: "fill-[#06b6d4]", // cyan
+  svgRectLight: "fill-[#bae6fd]", // light cyan / background lines
+  svgRectSkill: "fill-[#7dd3fc]", // soft cyan for skill bars
+
+  // Animated Elements
+  svgAnimatedCircle: "fill-[#3b82f6] opacity-80", // blue moving circle
+  svgAnimatedRect: "fill-[#06b6d4] opacity-80", // cyan animated rectangle
+  svgAnimatedPolygon: "fill-[#0ea5e9] opacity-80", // deep cyan / small triangle
 
   // Features section
-  featuresSection:
-    "bg-gradient-to-br from-violet-50 to-fuchsia-50 py-16 sm:py-24",
+  featuresSection: "bg-gradient-to-br from-blue-50 to-cyan-50 py-16 sm:py-24",
   featuresContainer: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8",
   featuresHeader: "text-center mb-12 sm:mb-20",
   featuresTitle:
@@ -102,7 +107,7 @@ export const landingPageStyles = {
   featuresTitleGradient:
     "bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent",
   featuresDescription:
-    "text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium",
+    "text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-medium tracking-wider",
   featuresGrid: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8",
 
   // Feature cards
