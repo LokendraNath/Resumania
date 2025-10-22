@@ -146,9 +146,9 @@ export const landingPageStyles = {
   ctaDescription:
     "text-base sm:text-lg text-slate-600 mb-6 sm:mb-10 max-w-2xl mx-auto font-medium",
   ctaButton:
-    "group relative px-8 sm:px-12 py-3 sm:py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black text-lg rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-violet-200",
+    "group relative px-8 sm:px-12 py-3 sm:py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black text-lg rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-200",
   ctaButtonOverlay:
-    "absolute inset-0 bg-gradient-to-r from-fuchsia-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity",
+    "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity",
   ctaButtonText: "relative",
 
   // Footer

@@ -31,6 +31,7 @@ const LandingPage = () => {
 
   return (
     <div className={landingPageStyles.container}>
+      {/* Header Section */}
       <header className={landingPageStyles.header}>
         <div className={landingPageStyles.headerContainer}>
           <div className={landingPageStyles.logoContainer}>
@@ -463,6 +464,36 @@ const LandingPage = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className={landingPageStyles.ctaSection}>
+          <div className={landingPageStyles.ctaContainer}>
+            <div className={landingPageStyles.ctaCard}>
+              <div className={landingPageStyles.ctaCardBg}></div>
+              <div className={landingPageStyles.ctaCardContent}>
+                <h2 className={landingPageStyles.ctaTitle}>
+                  Ready To Build Your{" "}
+                  <span className={landingPageStyles.ctaTitleGradient}>
+                    Standout Resume?
+                  </span>
+                </h2>
+                <p className={landingPageStyles.ctaDescription}>
+                  Join Thousands of Proffesinals who Landed Their Dream Jobs
+                  with Our Platform
+                </p>
+                <button
+                  className={landingPageStyles.ctaButton}
+                  onClick={handleCTA}
+                >
+                  <div className={landingPageStyles.ctaButtonOverlay}></div>
+                  <span className={landingPageStyles.ctaButtonText}>
+                    Start Building Now
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </section>
