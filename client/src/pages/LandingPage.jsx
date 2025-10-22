@@ -498,6 +498,23 @@ const LandingPage = () => {
           </div>
         </section>
       </main>
+
+      {/* Footer Section */}
+      <footer className={landingPageStyles.footer}>
+        <div className={landingPageStyles.footerContainer}>
+          <p className={landingPageStyles.footerText}>
+            Crafted With{" "}
+            <span className={landingPageStyles.footerHeart}>❣️</span> by{" "}
+            <a
+              href="https://github.com/LokendraNath"
+              target="_blank"
+              className={landingPageStyles.footerLink}
+            >
+              Lokendra Nath
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
