@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { cardStyles } from "../assets/dummystyle";
+import { LogOut } from "lucide-react";
 
 export const ProfileInfoCard = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const ProfileInfoCard = () => {
         <div>
           <div className={cardStyles.profileName}>{user.name || ""}</div>
           <button className={cardStyles.logoutButton} onClick={handleLogout}>
-            Logout
+            Logout <LogOut size={10} className="ml-1" />
           </button>
         </div>
       </div>
