@@ -426,7 +426,7 @@ const LandingPage = () => {
                   title: "Lightning Fast",
                   description:
                     "Create professional resumes in under 5 minutes with our streamlined process",
-                  gradient: landingPageStyles.featureIconViolet,
+                  gradient: landingPageStyles.featureIconYellow,
                   bg: landingPageStyles.featureCardViolet,
                 },
                 {
@@ -436,7 +436,7 @@ const LandingPage = () => {
                   title: "Pro Templates",
                   description:
                     "Choose from dozens of recruiter-approved, industry-specific templates",
-                  gradient: landingPageStyles.featureIconFuchsia,
+                  gradient: landingPageStyles.featureIconPurpul,
                   bg: landingPageStyles.featureCardFuchsia,
                 },
                 {
@@ -444,7 +444,7 @@ const LandingPage = () => {
                   title: "Instant Export",
                   description:
                     "Download high-quality PDFs instantly with perfect formatting",
-                  gradient: landingPageStyles.featureIconOrange,
+                  gradient: landingPageStyles.featureIconGreen,
                   bg: landingPageStyles.featureCardOrange,
                 },
               ].map((feature, index) => (
