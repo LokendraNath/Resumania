@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const BASE_URL = "https://localhost:4000/";
 
 // Routes Used For Frontend
