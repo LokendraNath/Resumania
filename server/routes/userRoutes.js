@@ -12,6 +12,6 @@ userRouts.post("/register", registerUser);
 userRouts.post("/login", loginUser);
 
 // Protected Router
-userRouts.post("/profile", protect, getUserProfile);
+userRouts.get("/profile", protect, getUserProfile);
 
 export default userRouts;

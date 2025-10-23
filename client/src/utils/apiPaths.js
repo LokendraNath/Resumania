@@ -1,11 +1,11 @@
-export const BASE_URL = "https://localhost:4000/";
+export const BASE_URL = "http://localhost:4000";
 
 // Routes Used For Frontend
 export const API_PATHS = {
   AUTH: {
     REGISTER: "/api/auth/register",
     LOGIN: "/api/auth/login",
-    GET_PROFILE: "/api/auth/login",
+    GET_PROFILE: "/api/auth/profile",
   },
   RESUME: {
     CREATE: "/api/resume",

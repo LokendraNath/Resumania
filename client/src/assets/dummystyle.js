@@ -127,9 +127,9 @@ export const landingPageStyles = {
   featureCardViolet: "from-violet-50 to-purple-50",
   featureCardFuchsia: "from-fuchsia-50 to-pink-50",
   featureCardOrange: "from-orange-50 to-red-50",
-  featureIconViolet: "from-violet-500 to-purple-600",
-  featureIconFuchsia: "from-fuchsia-500 to-pink-600",
-  featureIconOrange: "from-orange-500 to-red-600",
+  featureIconYellow: "from-yellow-500 to-orange-600",
+  featureIconPurpul: "from-purple-500 to-purple-600",
+  featureIconGreen: "from-green-500 to-green-600",
 
   // CTA section
   ctaSection: "py-16 sm:py-24",
@@ -215,13 +215,13 @@ export const dashboardStyles = {
 export const cardStyles = {
   // ProfileInfoCard styles
   profileCard:
-    "flex items-center gap-3 p-2 sm:p-3 bg-white backdrop-blur-xl border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.03]",
+    "flex items-center gap-3 bg-white backdrop-blur-xl border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.03] sm:pr-4",
   profileInitialsContainer:
-    "w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-2xl flex items-center justify-center shadow-md",
+    "w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-md",
   profileInitialsText: "text-base sm:text-lg font-black text-white",
   profileName: "text-xs sm:text-sm font-bold text-gray-800",
   logoutButton:
-    "text-violet-600 text-[10px] sm:text-xs font-bold cursor-pointer hover:text-fuchsia-600 transition-colors",
+    "text-red-600 text-[10px] sm:text-xs font-bold cursor-pointer hover:text-red-800 transition-colors flex items-center",
 
   // ResumeSummaryCard styles
   resumeCard:
@@ -295,7 +295,7 @@ export const cardStyles = {
 
 export const authStyles = {
   container:
-    "w-[90vw] md:w-[400px] p-8 bg-gradient-to-br from-white to-violet-50 rounded-3xl border border-violet-100 shadow-2xl",
+    "w-[90vw] md:w-[400px] p-8 bg-gradient-to-br from-white to-blue-50 rounded-3xl border border-blue-100 shadow-2xl",
   headerWrapper: "text-center mb-8",
   title: "text-2xl font-black text-slate-900 mb-2",
   subtitle: "text-slate-600 font-medium",
@@ -303,19 +303,19 @@ export const authStyles = {
   errorMessage:
     "text-red-500 text-sm font-medium bg-red-50 border border-red-200 px-4 py-3 rounded-xl",
   submitButton:
-    "w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-violet-200 transition-all text-lg",
-  switchText: "text-center text-sm text-slate-600 font-medium",
+    "w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-blue-200 transition-all text-lg",
+  switchText: "text-center text-sm mt-4 text-slate-600 font-medium",
   switchButton:
-    "font-black text-violet-600 hover:text-fuchsia-600 transition-colors",
+    "font-black text-cyan-600 hover:text-blue-600 cursor-pointer transition-colors",
   signupContainer:
     "w-[90vw] md:w-[400px] p-8 bg-gradient-to-br from-white to-rose-50 rounded-3xl border border-rose-100 shadow-2xl overflow-hidden",
   signupTitle: "text-2xl font-black text-slate-900 mb-2",
   signupSubtitle: "text-slate-600 font-medium",
   signupForm: "space-y-4",
   signupSubmit:
-    "w-full py-4 bg-gradient-to-r from-rose-500 to-pink-600 text-white font-black rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-rose-200 transition-all text-lg",
+    "w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-black rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-rose-200 transition-all text-lg",
   signupSwitchButton:
-    "font-black text-rose-600 hover:text-pink-600 transition-colors",
+    "font-black text-blue-600 hover:text-cyan-600 cursor-pointer transition-colors",
 };
 
 export const shimmerStyle = `
@@ -484,17 +484,17 @@ export const iconStyles = {
 export const inputStyles = {
   wrapper: "mb-6 group",
   label:
-    "block text-sm font-bold text-gray-800 mb-3 group-focus-within:text-violet-600 transition-colors",
+    "block text-sm font-bold text-gray-800 mb-3 group-focus-within:text-blue-600 transition-colors",
   inputContainer: (focused) =>
     `relative flex items-center bg-gray-50 border-2 px-4 py-3 rounded-xl transition-all duration-300 ${
       focused
-        ? "border-violet-500 ring-4 ring-violet-500/20 shadow-lg shadow-violet-500/10"
+        ? "border-blue-500 ring-4 ring-blue-500/20 shadow-lg shadow-blue-500/10"
         : "border-gray-300 hover:border-gray-400"
     }`,
   inputField:
     "w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 font-medium",
   toggleButton:
-    "text-gray-500 hover:text-violet-600 transition-colors p-1 rounded-lg hover:bg-gray-100",
+    "text-gray-500 hover:text-blue-600 transition-colors p-1 rounded-lg hover:bg-gray-100",
 };
 
 export const photoSelectorStyles = {
