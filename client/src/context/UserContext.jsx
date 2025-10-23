@@ -10,7 +10,6 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user) return;
     const accessToken = localStorage.getItem("token");
     if (!accessToken) {
       setLoading(false);
@@ -19,21 +18,29 @@ const UserProvider = ({ children }) => {
 
     const fetchUser = async () => {
       try {
-        const response = await axiosInstance.get(API_PATHS.AUTH.GET_PROFILE);
-        setUser(response.data);
+        const response = await axiosInstance.get(API_PATHS.AUTH.GET_PROFILE, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        setUser(response.data?.user || response.data);
       } catch (error) {
-        console.log("User Not Authenticated", error);
+        console.error("❌ User Not Authenticated:", error);
         clearUser();
       } finally {
         setLoading(false);
       }
     };
+
     fetchUser();
   }, []);
 
   const updateUser = (userData) => {
-    setUser(userData);
-    localStorage.setItem("token", userData.token);
+    setUser(userData.user || userData);
+    if (userData.token) {
+      localStorage.setItem("token", userData.token);
+    }
   };
 
   const clearUser = () => {
