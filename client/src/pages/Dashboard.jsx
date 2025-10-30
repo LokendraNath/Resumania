@@ -9,7 +9,7 @@ import { ResumeSummaryCard } from "../components/Card";
 import moment from "moment";
 import toast from "react-hot-toast";
 import Modal from "../components/Modal";
-import { CreateResumeForm } from "../components/CreateResumeForm";
+import CreateResumeForm from "../components/CreateResumeForm";
 
 const Dashboard = () => {
   const [openCreateModle, setOpenCreateModle] = useState(null);

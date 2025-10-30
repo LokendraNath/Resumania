@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { Input } from "./Input";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
+import { API_PATHS } from "../utils/apiPaths";
+
+const CreateResumeForm = () => {
+  const [title, setTitle] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate;
+
+  const handleCreateResume = async (e) => {
+    e.preventDefault();
+
+    if (!title) {
+      setError("Please Enter Resume Title");
+      return;
+    }
+    setError("");
+
+    try {
+      const response = await axiosInstance.post(API_PATHS.RESUME.CREATE, {
+        title,
+      });
+      if (response.data?._id) {
+        navigate(`/resume/${response.data?._id}`);
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something Went Wrong");
+      }
+    }
+  };
+
+  return (
+    <div className="w-full max-w-md p-8 bg-white rounded-2xl border border-gray-100 shadow-lg">
+      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+        Create New Resume
+      </h3>
+      <p>
+        Give Your Resume a title to get Started. You can Customize Everthing
+        Later
+      </p>
+      <form onSubmit={handleCreateResume}>
+        <Input
+          value={title}
+          onChange={({ target }) => setTitle(target.value)}
+          label="Resume Title"
+          placeholder="e.g. Ramesh Sahu - Graphic Designer"
+          type="text"
+        />
+
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+
+        <button className="w-full py-3 bg-gradient-to-r from-green-500 to-cyan-600 text-white font-black rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-rose-200 transition-all">
+          Create Resume
+        </button>
+      </form>
+    </div>
+  );
+};
+export default CreateResumeForm;
