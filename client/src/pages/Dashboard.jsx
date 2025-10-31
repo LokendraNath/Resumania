@@ -10,6 +10,7 @@ import moment from "moment";
 import toast from "react-hot-toast";
 import Modal from "../components/Modal";
 import CreateResumeForm from "../components/CreateResumeForm";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [openCreateModle, setOpenCreateModle] = useState(null);
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [resumeToDelete, setResumeToDelete] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const navigate = useNavigate();
 
   // Calculate Completion Percentage For A Resume
   const calculateCompletion = (resume) => {
@@ -124,7 +126,7 @@ const Dashboard = () => {
       console.error("Error deleting resume:", error);
     } finally {
       setResumeToDelete(null);
-      showDeleteConfirm(false);
+      setShowDeleteConfirm(false);
     }
   };
 

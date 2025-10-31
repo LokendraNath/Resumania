@@ -7,7 +7,7 @@ import { API_PATHS } from "../utils/apiPaths";
 const CreateResumeForm = () => {
   const [title, setTitle] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleCreateResume = async (e) => {
     e.preventDefault();
