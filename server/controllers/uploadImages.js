@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import upload from "../middleware/uploadMiddleware.js";
-import Resume from "../modals/resumeModle.js";
+import Resume from "../models/resumeModel.js";
 
 export const uploadResumeImage = async (req, res) => {
   try {
@@ -36,14 +36,14 @@ export const uploadResumeImage = async (req, res) => {
         const newProfileImage = req.files.profileImage?.[0];
 
         if (newThumbnail) {
-          if (resume.thumbanailLink) {
+          if (resume.thumbnailLink) {
             const oldThumbnail = path.join(
               uploadFolder,
-              path.basename(resume.thumbanailLink)
+              path.basename(resume.thumbnailLink)
             );
             if (fs.existsSync(oldThumbnail)) fs.unlinkSync(oldThumbnail);
           }
-          resume.thumbanailLink = `${baseUrl}/uploads/${newThumbnail.fileName}`;
+          resume.thumbnailLink = `${baseUrl}/uploads/${newThumbnail.fileName}`;
         }
 
         // Same For profilePreview Image
@@ -56,12 +56,12 @@ export const uploadResumeImage = async (req, res) => {
 
             if (fs.existsSync(oldThumbnail)) fs.unlinkSync(oldThumbnail);
           }
-          resume.thumbanailLink = `${baseUrl}/uploads/${newProfileImage.fileName}`;
+          resume.thumbnailLink = `${baseUrl}/uploads/${newProfileImage.fileName}`;
         }
         await resume.save();
         res.status(200).json({
           message: "Image uploaded Successfully",
-          thumbnailLink: resume.thumbanailLink,
+          thumbnailLink: resume.thumbnailLink,
           profilePreviewUrl: resume.profileInfo.profilePreviewUrl,
         });
       }

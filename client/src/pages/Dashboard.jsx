@@ -8,7 +8,7 @@ import { ResumeSummaryCard } from "../components/Card";
 
 import moment from "moment";
 import toast from "react-hot-toast";
-import Modal from "../components/Modal";
+import Modal from "../components/Model";
 import CreateResumeForm from "../components/CreateResumeForm";
 import { useNavigate } from "react-router-dom";
 

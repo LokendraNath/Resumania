@@ -1,6 +1,6 @@
-import Resume from "../modals/resumeModle.js";
 import fs from "fs";
 import path from "path";
+import Resume from "../models/resumeModel.js";
 
 export const createResume = async (req, res) => {
   try {
@@ -147,27 +147,22 @@ export const deleteResume = async (req, res) => {
       _id: req.params.id,
       userId: req.user._id,
     });
-    if (!resume) {
-      return res
-        .status(400)
-        .json({ message: "Resume Not Found or Not Authorize" });
-    }
 
     // Create a Upload Folder and Store in Their
     const uploadFolder = path.join(process.cwd(), "uploads");
 
     // Delete Thumbnail Functions
-    if (resume.thumbanailLink) {
+    if (resume.thumbnailLink) {
       const oldThumbnail = path.join(
         uploadFolder,
-        path.basename(resume.thumbanailLink)
+        path.basename(resume.thumbnailLink)
       );
       if (fs.existsSync(oldThumbnail)) {
         fs.unlinkSync(oldThumbnail);
       }
     }
 
-    if (resume.profileInfo?.profilePreview.Url) {
+    if (resume.profileInfo?.previewUrl) {
       const oldProfile = path.join(
         uploadFolder,
         path.basename(resume.profileInfo.profilePreviewUrl)

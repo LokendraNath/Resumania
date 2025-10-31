@@ -13,7 +13,7 @@ import { UserContext } from "../context/UserContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { ProfileInfoCard } from "../components/Card.jsx";
 import { landingPageStyles } from "../assets/dummystyle.js";
-import Modal from "../components/Modal.jsx";
+import Modal from "../components/Model.jsx";
 import Login from "../components/Login.jsx";
 import SignUp from "../components/SignUp.jsx";
 

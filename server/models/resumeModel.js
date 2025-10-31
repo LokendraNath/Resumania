@@ -11,7 +11,7 @@ const ResumeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    thumbanailLink: {
+    thumbnailLink: {
       type: String,
     },
     template: {

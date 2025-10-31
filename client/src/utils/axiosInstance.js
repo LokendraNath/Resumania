@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { BASE_URL } from "./apiPaths.js";
 
 const axiosInstance = axios.create({
@@ -20,25 +19,22 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response Intersepter
+// Response Interceptor
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
+        localStorage.removeItem("token");
         window.location.href = "/";
       } else if (error.response.status === 500) {
-        console.log("Server Error");
+        console.error("Server Error");
       }
     } else if (error.code === "ECONNABORTED") {
-      console.log("Request Timeout");
+      console.error("Request Timeout");
     }
     return Promise.reject(error);
   }
