@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import {
   photoSelectorStyles,
   inputStyles as styles,
+  titleInputStyles,
 } from "../assets/dummystyle";
-import { Eye, EyeOff } from "lucide-react";
+import { Check, Edit, Eye, EyeOff } from "lucide-react";
 
 export const Input = ({
   value,
