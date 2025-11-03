@@ -425,7 +425,7 @@ const LandingPage = () => {
                   icon: <Zap className={landingPageStyles.featureIcon} />,
                   title: "Lightning Fast",
                   description:
-                    "Create professional resumes in under 5 minutes with our streamlined process",
+                    "Create professional resumes in under 5 min with our streamlined process",
                   gradient: landingPageStyles.featureIconYellow,
                   bg: landingPageStyles.featureCardViolet,
                 },
