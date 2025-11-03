@@ -412,7 +412,7 @@ const LandingPage = () => {
                 <span className={landingPageStyles.featuresTitleGradient}>
                   Resumania
                 </span>{" "}
-                Is Your Best Choice
+                Is Your Best Choice 👇
               </h2>
               <p className={landingPageStyles.featuresDescription}>
                 Get noticed faster with powerful, sleek, and modern resume
