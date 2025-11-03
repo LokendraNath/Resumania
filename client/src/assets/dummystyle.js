@@ -48,7 +48,7 @@ export const landingPageStyles = {
   heroLeft: "space-y-2",
   tagline:
     "inline-flex items-center gap-2 sm:gap-3 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 border border-blue-200 text-blue-700 rounded-full font-bold text-xs sm:text-sm",
-  heading: "text-3xl sm:text-5xl lg:text-7xl font-black leading-tight",
+  heading: "text-3xl sm:text-4xl lg:text-6xl font-black leading-tight",
   headingText: "block text-slate-900",
   headingGradient:
     "block bg-gradient-to-r from-blue-600 via-cyan-600 to-violet-500 bg-clip-text text-transparent",
