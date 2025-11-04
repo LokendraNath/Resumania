@@ -7,6 +7,8 @@ import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
 import { Download, Palette, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { fixTailwindColors } from "../utils/color";
+import html2pdf from "html2pdf.js";
 
 const useResizeObserver = () => {
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -562,6 +564,7 @@ const EditResume = () => {
 
       document.body.removeChild(fixedThumbnail);
 
+      // Store The Image As Resume
       const thumbnailDataUrl = thumbnailCanvas.toDataURL("image/png");
       const thumbnailFile = dataURLtoFile(
         thumbnailDataUrl,
