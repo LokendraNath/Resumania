@@ -595,6 +595,24 @@ const EditResume = () => {
     }
   };
 
+  // This Function will help in Updating the Resumes. And put will help in updating On Backend
+  const updateResumeDetails = async (thumbnailLink) => {
+    try {
+      setIsLoading(true);
+
+      await axiosInstance.put(API_PATHS.RESUME.UPDATE(resumeId), {
+        ...resumeData,
+        thumbnailLink: thumbnailLink || "",
+        completion: completionPercentage,
+      });
+    } catch (err) {
+      console.error("Error updating resume:", err);
+      toast.error("Failed to update resume details");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Delete Function To Delete Any Resume
   const handleDeleteResume = async () => {
     try {
@@ -609,6 +627,82 @@ const EditResume = () => {
       setIsLoading(false);
     }
   };
+
+  const downloadPDF = async () => {
+    const element = resumeDownloadRef.current;
+    if (!element) {
+      toast.error("Failed to generate PDF. Please try again.");
+      return;
+    }
+
+    setIsDownloading(true);
+    setDownloadSuccess(false);
+    const toastId = toast.loading("Generating PDFâ€¦");
+
+    const override = document.createElement("style");
+    override.id = "__pdf_color_override__";
+    override.textContent = `
+      * {
+        color: #000 !important;
+        background-color: #fff !important;
+        border-color: #000 !important;
+      }
+    `;
+    document.head.appendChild(override);
+
+    try {
+      await html2pdf()
+        .set({
+          margin: 0,
+          filename: `${resumeData.title.replace(/[^a-z0-9]/gi, "_")}.pdf`,
+          image: { type: "png", quality: 1.0 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#FFFFFF",
+            logging: false,
+            windowWidth: element.scrollWidth,
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+          },
+          pagebreak: {
+            mode: ["avoid-all", "css", "legacy"],
+          },
+        })
+        .from(element)
+        .save(); // save resume here
+
+      toast.success("PDF downloaded successfully!", { id: toastId });
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 3000);
+    } catch (err) {
+      console.error("PDF error:", err);
+      toast.error(`Failed to generate PDF: ${err.message}`, { id: toastId });
+    } finally {
+      document.getElementById("__pdf_color_override__")?.remove();
+      setIsDownloading(false);
+    }
+  };
+
+  // Theme Selector Function
+  const updateTheme = (theme) => {
+    setResumeData((prev) => ({
+      ...prev,
+      template: {
+        theme: theme,
+        colorPalette: [],
+      },
+    }));
+  };
+
+  useEffect(() => {
+    if (resumeId) {
+      fetchResumeDetailsById();
+    }
+  }, [resumeId]);
 
   return (
     <DashboardLayout>
