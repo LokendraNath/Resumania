@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { resumeTemplates } from "../utils/data";
+import { DUMMY_RESUME_DATA, resumeTemplates } from "../utils/data";
 import Tabs from "./Tabs";
 import { Check } from "lucide-react";
 import { TemplateCard } from "./Card";
+import RenderResume from "./RenderResume";
 
 const ThemeSelector = ({ selectedTheme, setSelectedTheme }) => {
   const resumeRef = useRef(null);
@@ -63,6 +64,17 @@ const ThemeSelector = ({ selectedTheme, setSelectedTheme }) => {
               />;
             })}
           </div>
+        </div>
+        {/* Right Area */}
+        <div
+          className="lg:col-span-3 bg-white rounded-2xl border border-gray-100  p-4 sm:p-6"
+          ref={resumeRef}
+        >
+          <RenderResume
+            templateId={selectedTemplate?.theme || ""}
+            resumeData={resumeData || DUMMY_RESUME_DATA}
+            containerWidth={baseWidth}
+          />
         </div>
       </div>
     </div>
