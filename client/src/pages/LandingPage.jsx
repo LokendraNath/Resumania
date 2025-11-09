@@ -111,9 +111,6 @@ const LandingPage = () => {
           <div className={landingPageStyles.heroGrid}>
             {/* Left Content */}
             <div className={landingPageStyles.heroLeft}>
-              <div className={landingPageStyles.tagline}>
-                Pro Resume Builder
-              </div>
               <h1 className={landingPageStyles.heading}>
                 <span className={landingPageStyles.headingText}>
                   Generate Your
