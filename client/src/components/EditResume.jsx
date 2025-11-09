@@ -800,41 +800,82 @@ const EditResume = () => {
     setDownloadSuccess(false);
     const toastId = toast.loading("Generating PDF…");
 
-    // Create a clone with converted colors for PDF generation
-    const pdfElement = convertOklchToRgb(element);
+    // Create a clone and convert oklch colors for PDF generation
+    const pdfClone = convertOklchToRgb(element);
+    pdfClone.style.position = "relative";
+    pdfClone.style.width = getComputedStyle(element).width;
+
+    // Inline computed styles (so external CSS and variables are preserved)
+    const inlineAllStyles = (root) => {
+      const nodes = [root, ...root.querySelectorAll("*")];
+      nodes.forEach((node) => {
+        try {
+          const cs = getComputedStyle(node);
+          // Build cssText from computed styles (selected subset to avoid huge strings)
+          let cssText = "";
+          for (let i = 0; i < cs.length; i++) {
+            const prop = cs[i];
+            // skip some properties that can break layout in print
+            if (/[\-]?(animation|transition|perspective|cursor)/i.test(prop))
+              continue;
+            cssText += `${prop}: ${cs.getPropertyValue(prop)}; `;
+          }
+          node.style.cssText = cssText;
+        } catch (e) {
+          // ignore nodes we can't compute
+        }
+      });
+    };
+
+    // Wait for fonts and images to load to avoid rendering differences
+    const waitForResources = async (root) => {
+      try {
+        await document.fonts?.ready;
+      } catch (e) {
+        /* ignore */
+      }
+
+      const imgs = Array.from(root.querySelectorAll("img"));
+      await Promise.all(
+        imgs.map((img) => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((res) => (img.onload = img.onerror = res));
+        })
+      );
+    };
+
+    // Append clone to DOM (offscreen) so canvas can render it
     const originalParent = element.parentNode;
     const originalDisplay = element.style.display;
-
-    // Temporarily replace the element
-    element.style.display = "none";
-    originalParent.appendChild(pdfElement);
-
-    const override = document.createElement("style");
-    override.id = "__pdf_color_override__";
-    override.textContent = `
-      * {
-        color: #000 !important;
-        background-color: #fff !important;
-        border-color: #000 !important;
-      }
-    `;
-    document.head.appendChild(override);
+    element.style.visibility = "hidden";
+    originalParent.appendChild(pdfClone);
 
     try {
+      // Inline styles and wait for resources
+      inlineAllStyles(pdfClone);
+      await waitForResources(pdfClone);
+
+      // Use a higher scale for better fidelity. If you hit memory issues, reduce scale.
+      const scale = Math.min(3, window.devicePixelRatio || 2);
+
       await html2pdf()
         .set({
           margin: 0,
           filename: `${resumeData.title.replace(/[^a-z0-9]/gi, "_")}.pdf`,
           image: { type: "png", quality: 1.0 },
           html2canvas: {
-            scale: 2,
+            scale,
             useCORS: true,
             backgroundColor: "#FFFFFF",
             logging: false,
-            windowWidth: pdfElement.scrollWidth,
-            ignoreElements: (el) => {
-              return el.tagName === "SCRIPT" || el.tagName === "STYLE";
-            },
+            windowWidth: Math.max(pdfClone.scrollWidth, pdfClone.offsetWidth),
+            windowHeight: Math.max(
+              pdfClone.scrollHeight,
+              pdfClone.offsetHeight
+            ),
+            scrollX: 0,
+            scrollY: 0,
+            ignoreElements: (el) => el.tagName === "SCRIPT",
           },
           jsPDF: {
             unit: "mm",
@@ -842,10 +883,10 @@ const EditResume = () => {
             orientation: "portrait",
           },
           pagebreak: {
-            mode: ["avoid-all", "css", "legacy"],
+            mode: ["css", "legacy"],
           },
         })
-        .from(pdfElement)
+        .from(pdfClone)
         .save();
 
       toast.success("PDF downloaded successfully!", { id: toastId });
@@ -856,11 +897,8 @@ const EditResume = () => {
       toast.error(`Failed to generate PDF: ${err.message}`, { id: toastId });
     } finally {
       // Cleanup
-      document.getElementById("__pdf_color_override__")?.remove();
-      if (pdfElement.parentNode) {
-        pdfElement.parentNode.removeChild(pdfElement);
-      }
-      element.style.display = originalDisplay;
+      if (pdfClone.parentNode) pdfClone.parentNode.removeChild(pdfClone);
+      element.style.visibility = "visible";
       setIsDownloading(false);
     }
   };
@@ -1010,6 +1048,7 @@ const EditResume = () => {
           <ThemeSelector
             selectedTheme={resumeData?.template?.theme}
             setSelectedTheme={updateTheme}
+            onClose={() => setOpenThemeSelector(false)}
           />
         </div>
       </Modal>
