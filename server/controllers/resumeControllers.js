@@ -9,8 +9,7 @@ export const createResume = async (req, res) => {
     // Default template
     const defaultResumeData = {
       profileInfo: {
-        profileImg: null,
-        previewUrl: "",
+        profilePreviewUrl: "",
         fullName: "",
         designation: "",
         summary: "",
@@ -163,9 +162,10 @@ export const deleteResume = async (req, res) => {
     }
 
     if (resume.profileInfo?.previewUrl) {
+      // cleanup profile preview image (if present)
       const oldProfile = path.join(
         uploadFolder,
-        path.basename(resume.profileInfo.profilePreviewUrl)
+        path.basename(resume.profileInfo.profilePreviewUrl || "")
       );
       if (fs.existsSync(oldProfile)) {
         fs.unlinkSync(oldProfile);

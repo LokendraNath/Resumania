@@ -20,26 +20,26 @@ const ResumeSchema = new mongoose.Schema(
     },
     profileInfo: {
       profilePreviewUrl: String,
-      fullname: String,
+      fullName: String,
       designation: String,
-      sammary: String,
+      summary: String,
     },
-    profileInfo: {
+    contactInfo: {
       email: String,
       phone: String,
       location: String,
-      linkedIn: String,
-      gitHub: String,
+      linkedin: String,
+      github: String,
       website: String,
     },
-    // Work EXP
+    // Work Experience
     workExperience: [
       {
-        comapny: String,
+        company: String,
         role: String,
         startDate: String,
         endDate: String,
-        descreption: String,
+        description: String,
       },
     ],
     education: [
@@ -60,7 +60,7 @@ const ResumeSchema = new mongoose.Schema(
       {
         title: String,
         description: String,
-        gitHub: String,
+        github: String,
         liveDemo: String,
       },
     ],
@@ -71,12 +71,14 @@ const ResumeSchema = new mongoose.Schema(
         year: String,
       },
     ],
-    language: [
+    languages: [
       {
         name: String,
         progress: Number,
       },
     ],
+    interests: [String],
+    completion: Number,
   },
   {
     timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" },
