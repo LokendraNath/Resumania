@@ -69,7 +69,7 @@ export const landingPageStyles = {
   // Stats
   statsContainer:
     "flex flex-wrap sm:flex-nowrap items-center gap-6 sm:gap-8 pt-6",
-  statItem: "text-center",
+  statItem: "text-center sm:mr-5 lg:mr-10 ",
   statNumber:
     "text-2xl sm:text-3xl lg:text-4xl font-black bg-gradient-to-r bg-clip-text text-transparent",
   statLabel: "text-xs sm:text-sm text-slate-500 font-medium",
