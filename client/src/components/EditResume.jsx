@@ -1,14 +1,123 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { buttonStyles, containerStyles } from "../assets/dummystyle";
+import {
+  buttonStyles,
+  containerStyles,
+  iconStyles,
+  statusStyles,
+} from "../assets/dummystyle";
 import DashboardLayout from "./DashboardLayout";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TitleInput } from "./Input";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
-import { Download, Palette, Trash2 } from "lucide-react";
+import {
+  AlertCircle,
+  ArrowLeft,
+  Check,
+  Download,
+  Loader2,
+  Palette,
+  Save,
+  Trash2,
+} from "lucide-react";
 import toast from "react-hot-toast";
-import { fixTailwindColors } from "../utils/color";
 import html2pdf from "html2pdf.js";
+import html2canvas from "html2canvas";
+import StepProgress from "./StepProgress";
+import {
+  ContactInfoForm,
+  ProfileInfoForm,
+  WorkExperienceForm,
+  EducationDetailsForm,
+  SkillsInfoForm,
+  ProjectDetailForm,
+  CertificationInfoForm,
+  AdditionalInfoForm,
+} from "./Forms";
+import RenderResume from "./RenderResume";
+import Modal from "./Model";
+import { ThemeSelector } from "./ThemeSelector";
+import { fixTailwindColors } from "../utils/helper";
+
+// Helper function to convert DataURL to File
+const dataURLtoFile = (dataurl, filename) => {
+  if (!dataurl) {
+    throw new Error("Data URL is null or undefined");
+  }
+
+  const arr = dataurl.split(",");
+
+  if (arr.length < 2) {
+    throw new Error("Invalid data URL format");
+  }
+
+  const mimeMatch = arr[0].match(/:(.*?);/);
+  if (!mimeMatch) {
+    throw new Error("Could not extract MIME type from data URL");
+  }
+
+  const mime = mimeMatch[1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+};
+
+// NEW: Function to convert oklch colors to rgb for html2canvas compatibility
+const convertOklchToRgb = (element) => {
+  if (!element) return element;
+
+  // Create a deep clone of the element
+  const clone = element.cloneNode(true);
+
+  // Function to convert oklch to rgb (simplified conversion)
+  const oklchToRgb = (oklchValue) => {
+    // This is a simplified conversion - for exact conversion you might need a library
+    // For now, we'll convert common oklch values to their rgb equivalents
+    const colorMap = {
+      "oklch(0.5 0.2 0.1)": "rgb(128, 128, 128)",
+      "oklch(0.2 0.1 0.1)": "rgb(51, 51, 51)",
+      "oklch(0.8 0.1 0.1)": "rgb(204, 204, 204)",
+      "oklch(0.9 0.05 0.1)": "rgb(230, 230, 230)",
+      // Add more mappings as needed based on your theme colors
+    };
+
+    return colorMap[oklchValue] || "rgb(0, 0, 0)"; // Default to black if not found
+  };
+
+  // Recursive function to process all elements
+  const processElement = (el) => {
+    if (el.style) {
+      const style = getComputedStyle(el);
+
+      // Check and convert background color
+      if (style.backgroundColor.includes("oklch")) {
+        el.style.backgroundColor = oklchToRgb(style.backgroundColor);
+      }
+
+      // Check and convert color
+      if (style.color.includes("oklch")) {
+        el.style.color = oklchToRgb(style.color);
+      }
+
+      // Check and convert border color
+      if (style.borderColor.includes("oklch")) {
+        el.style.borderColor = oklchToRgb(style.borderColor);
+      }
+    }
+
+    // Process children
+    Array.from(el.children).forEach(processElement);
+  };
+
+  processElement(clone);
+  return clone;
+};
 
 const useResizeObserver = () => {
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -19,6 +128,7 @@ const useResizeObserver = () => {
         setSize({ width, height });
       });
       resizeObserver.observe(node);
+      return () => resizeObserver.disconnect();
     }
   }, []);
   return { ...size, ref };
@@ -110,7 +220,7 @@ const EditResume = () => {
   });
 
   // Calculate completion percentage
-  const calculateCompletion = () => {
+  const calculateCompletion = useCallback(() => {
     let completedFields = 0;
     let totalFields = 0;
 
@@ -184,14 +294,14 @@ const EditResume = () => {
     const percentage = Math.round((completedFields / totalFields) * 100);
     setCompletionPercentage(percentage);
     return percentage;
-  };
+  }, [resumeData]);
 
   useEffect(() => {
     calculateCompletion();
-  }, [resumeData]);
+  }, [calculateCompletion]);
 
   // Validate Inputs
-  const validateAndNext = (e) => {
+  const validateAndNext = () => {
     const errors = [];
 
     switch (currentPage) {
@@ -327,7 +437,6 @@ const EditResume = () => {
     }
   };
 
-  // Take Back To Previuos Form State or Take Back To First Page
   const goBack = () => {
     const pages = [
       "profile-info",
@@ -340,7 +449,10 @@ const EditResume = () => {
       "additionalInfo",
     ];
 
-    if (currentPage === "profile-info") navigate("/dashboard");
+    if (currentPage === "profile-info") {
+      navigate("/dashboard");
+      return;
+    }
 
     const currentIndex = pages.indexOf(currentPage);
     if (currentIndex > 0) {
@@ -470,7 +582,6 @@ const EditResume = () => {
     }));
   };
 
-  // Update Array Item State Using Index
   const updateArrayItem = (section, index, key, value) => {
     setResumeData((prev) => {
       const updatedArray = [...prev[section]];
@@ -491,7 +602,6 @@ const EditResume = () => {
     });
   };
 
-  // Adding New Item Information
   const addArrayItem = (section, newItem) => {
     setResumeData((prev) => ({
       ...prev,
@@ -499,7 +609,6 @@ const EditResume = () => {
     }));
   };
 
-  // Removing The Info Using Index
   const removeArrayItem = (section, index) => {
     setResumeData((prev) => {
       const updatedArray = [...prev[section]];
@@ -511,8 +620,8 @@ const EditResume = () => {
     });
   };
 
-  // Fetching The Resume Details Using Backend URL
-  const fetchResumeDetailsById = async () => {
+  // Wrap fetchResumeDetailsById in useCallback to fix dependency warning
+  const fetchResumeDetailsById = useCallback(async () => {
     try {
       const response = await axiosInstance.get(
         API_PATHS.RESUME.GET_BY_ID(resumeId)
@@ -542,30 +651,84 @@ const EditResume = () => {
       console.error("Error fetching resume:", error);
       toast.error("Failed to load resume data");
     }
+  }, [resumeId]);
+
+  // NEW: Improved captureThumbnail function with oklch compatibility
+  const captureThumbnail = async () => {
+    const thumbnailElement = thumbnailRef.current;
+
+    if (!thumbnailElement) {
+      throw new Error("Thumbnail element not found");
+    }
+
+    // Create a temporary container for capturing
+    const tempContainer = document.createElement("div");
+    tempContainer.style.position = "fixed";
+    tempContainer.style.left = "0";
+    tempContainer.style.top = "0";
+    tempContainer.style.width = "210mm";
+    tempContainer.style.height = "297mm";
+    tempContainer.style.backgroundColor = "white";
+    tempContainer.style.zIndex = "10000";
+    tempContainer.style.opacity = "0";
+
+    // Clone and convert oklch colors to rgb
+    const clone = convertOklchToRgb(thumbnailElement);
+    clone.style.display = "block";
+    clone.style.visibility = "visible";
+    clone.style.opacity = "1";
+    clone.style.position = "relative";
+    clone.style.width = "100%";
+    clone.style.height = "100%";
+
+    tempContainer.appendChild(clone);
+    document.body.appendChild(tempContainer);
+
+    try {
+      const canvas = await html2canvas(tempContainer, {
+        scale: 0.2,
+        backgroundColor: "#FFFFFF",
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        // Add ignore elements that might cause issues
+        ignoreElements: (element) => {
+          return element.tagName === "SCRIPT" || element.tagName === "STYLE";
+        },
+      });
+
+      return canvas;
+    } finally {
+      // Always cleanup the temporary container
+      if (tempContainer.parentNode) {
+        tempContainer.parentNode.removeChild(tempContainer);
+      }
+    }
   };
 
-  // It Will Help In Choosing The Preview as Well As Helps In Downloading The Resume Also Saves The Resume As A Image.
+  // FIXED: uploadResumeImages function
   const uploadResumeImages = async () => {
     try {
       setIsLoading(true);
 
-      const thumbnailElement = thumbnailRef.current;
-      if (!thumbnailElement) {
-        throw new Error("Thumbnail element not found");
+      // Use the new captureThumbnail function
+      const thumbnailCanvas = await captureThumbnail();
+
+      if (!thumbnailCanvas) {
+        throw new Error("Failed to create canvas");
       }
 
-      const fixedThumbnail = fixTailwindColors(thumbnailElement);
-
-      const thumbnailCanvas = await html2canvas(fixedThumbnail, {
-        scale: 0.5,
-        backgroundColor: "#FFFFFF",
-        logging: false,
-      });
-
-      document.body.removeChild(fixedThumbnail);
-
-      // Store The Image As Resume
       const thumbnailDataUrl = thumbnailCanvas.toDataURL("image/png");
+
+      // Better validation for data URL
+      if (
+        !thumbnailDataUrl ||
+        !thumbnailDataUrl.startsWith("data:image/png") ||
+        thumbnailDataUrl.length < 1000
+      ) {
+        throw new Error("Generated thumbnail is invalid or too small");
+      }
+
       const thumbnailFile = dataURLtoFile(
         thumbnailDataUrl,
         `thumbnail-${resumeId}.png`
@@ -589,13 +752,12 @@ const EditResume = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error("Error Uploading Images:", error);
-      toast.error("Failed to upload images");
+      toast.error("Failed to upload images: " + error.message);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // This Function will help in Updating the Resumes. And put will help in updating On Backend
   const updateResumeDetails = async (thumbnailLink) => {
     try {
       setIsLoading(true);
@@ -613,7 +775,6 @@ const EditResume = () => {
     }
   };
 
-  // Delete Function To Delete Any Resume
   const handleDeleteResume = async () => {
     try {
       setIsLoading(true);
@@ -637,7 +798,16 @@ const EditResume = () => {
 
     setIsDownloading(true);
     setDownloadSuccess(false);
-    const toastId = toast.loading("Generating PDFâ€¦");
+    const toastId = toast.loading("Generating PDF…");
+
+    // Create a clone with converted colors for PDF generation
+    const pdfElement = convertOklchToRgb(element);
+    const originalParent = element.parentNode;
+    const originalDisplay = element.style.display;
+
+    // Temporarily replace the element
+    element.style.display = "none";
+    originalParent.appendChild(pdfElement);
 
     const override = document.createElement("style");
     override.id = "__pdf_color_override__";
@@ -661,7 +831,10 @@ const EditResume = () => {
             useCORS: true,
             backgroundColor: "#FFFFFF",
             logging: false,
-            windowWidth: element.scrollWidth,
+            windowWidth: pdfElement.scrollWidth,
+            ignoreElements: (el) => {
+              return el.tagName === "SCRIPT" || el.tagName === "STYLE";
+            },
           },
           jsPDF: {
             unit: "mm",
@@ -672,8 +845,8 @@ const EditResume = () => {
             mode: ["avoid-all", "css", "legacy"],
           },
         })
-        .from(element)
-        .save(); // save resume here
+        .from(pdfElement)
+        .save();
 
       toast.success("PDF downloaded successfully!", { id: toastId });
       setDownloadSuccess(true);
@@ -682,18 +855,22 @@ const EditResume = () => {
       console.error("PDF error:", err);
       toast.error(`Failed to generate PDF: ${err.message}`, { id: toastId });
     } finally {
+      // Cleanup
       document.getElementById("__pdf_color_override__")?.remove();
+      if (pdfElement.parentNode) {
+        pdfElement.parentNode.removeChild(pdfElement);
+      }
+      element.style.display = originalDisplay;
       setIsDownloading(false);
     }
   };
 
-  // Theme Selector Function
   const updateTheme = (theme) => {
     setResumeData((prev) => ({
       ...prev,
       template: {
+        ...prev.template,
         theme: theme,
-        colorPalette: [],
       },
     }));
   };
@@ -702,7 +879,7 @@ const EditResume = () => {
     if (resumeId) {
       fetchResumeDetailsById();
     }
-  }, [resumeId]);
+  }, [resumeId, fetchResumeDetailsById]);
 
   return (
     <DashboardLayout>
@@ -720,7 +897,7 @@ const EditResume = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => setOpenThemeSelector()}
+              onClick={() => setOpenThemeSelector((prev) => !prev)}
               className={buttonStyles.theme}
             >
               <Palette size={16} />
@@ -745,9 +922,155 @@ const EditResume = () => {
           </div>
         </div>
 
-        {/*  */}
+        <div className={containerStyles.grid}>
+          <div className={containerStyles.formContainer}>
+            <StepProgress progress={progress} />
+            {renderForm()}
+            <div className="p-4 sm:p-6">
+              {errorMsg && (
+                <div className={statusStyles.error}>
+                  <AlertCircle size={16} />
+                  {errorMsg}
+                </div>
+              )}
+
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                <button
+                  className={buttonStyles.back}
+                  onClick={goBack}
+                  disabled={isLoading}
+                >
+                  <ArrowLeft size={16} />
+                  Back
+                </button>
+
+                <button
+                  className={buttonStyles.save}
+                  onClick={uploadResumeImages}
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Save size={16} />
+                  )}
+                  {isLoading ? "Saving ..." : "Save & Exit"}
+                </button>
+
+                <button
+                  className={buttonStyles.next}
+                  onClick={validateAndNext}
+                  disabled={isLoading}
+                >
+                  {currentPage === "additionalInfo" && <Download size={16} />}
+                  {currentPage === "additionalInfo"
+                    ? "Preview & Download"
+                    : "Next"}
+                  {currentPage === "additionalInfo" && (
+                    <ArrowLeft size={16} className="rotate-180" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden lg:block">
+            <div className={containerStyles.previewContainer}>
+              <div className="text-center mb-4">
+                <div className={statusStyles.completionBadge}>
+                  <div className={iconStyles.pulseDot}></div>
+                  <span>Preview - {completionPercentage}% Complete</span>
+                </div>
+              </div>
+
+              <div
+                className="preview-container relative"
+                ref={previewContainerRef}
+              >
+                <div className={containerStyles.previewInner}>
+                  <RenderResume
+                    key={`preview-${resumeData?.template?.theme}`}
+                    templateId={resumeData?.template?.theme || ""}
+                    resumeData={resumeData}
+                    containerWidth={previewWidth}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Modal
+        isOpen={openThemeSelector}
+        onClose={() => setOpenThemeSelector(false)}
+        title="Change Theme"
+      >
+        <div className={containerStyles.modalContent}>
+          <ThemeSelector
+            selectedTheme={resumeData?.template?.theme}
+            setSelectedTheme={updateTheme}
+          />
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={openPreviewModal}
+        onClose={() => setOpenPreviewModal(false)}
+        title={resumeData.title}
+        showActionBtn
+        actionBtnText={
+          isDownloading
+            ? "Generating ..."
+            : downloadSuccess
+            ? "Downloaded!"
+            : "Download PDF"
+        }
+        actionBtnIcon={
+          isDownloading ? (
+            <Loader2 size={16} className="animate-spin" />
+          ) : downloadSuccess ? (
+            <Check size={16} className="text-white" />
+          ) : (
+            <Download size={16} />
+          )
+        }
+        onActionClick={downloadPDF}
+      >
+        <div className="relative">
+          <div className="text-center mb-4">
+            <div className={statusStyles.modalBadge}>
+              <div className={iconStyles.pulseDot}></div>
+              <span>Completion: {completionPercentage}%</span>
+            </div>
+          </div>
+
+          <div className={containerStyles.pdfPreview}>
+            <div ref={resumeDownloadRef} className="a4-wrapper">
+              <div className="w-full h-full">
+                <RenderResume
+                  key={`pdf-${resumeData?.template?.theme}`}
+                  templateId={resumeData?.template?.theme || ""}
+                  resumeData={resumeData}
+                  containerWidth={null}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+      <div style={{ display: "none" }} ref={thumbnailRef}>
+        <div className={containerStyles.hiddenThumbnail}>
+          <RenderResume
+            key={`thumb-${resumeData?.template?.theme}`}
+            templateId={resumeData?.template?.theme || ""}
+            resumeData={resumeData}
+          />
+        </div>
       </div>
     </DashboardLayout>
   );
 };
+
 export default EditResume;
