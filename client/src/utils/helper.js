@@ -109,6 +109,18 @@ export function formatYearMonth(yearMonth) {
  */
 export const fixTailwindColors = (rootElement) => {
   if (!rootElement) return;
+
+  // First ensure the element is properly positioned and visible
+  rootElement.style.position = "absolute";
+  rootElement.style.left = "-9999px";
+  rootElement.style.top = "0";
+  rootElement.style.visibility = "visible";
+  rootElement.style.opacity = "1";
+  rootElement.style.width = "800px";
+  rootElement.style.height = "600px";
+  rootElement.style.background = "#ffffff";
+
+  // Process all elements for oklch colors
   const elements = rootElement.querySelectorAll("*");
   elements.forEach((el) => {
     const style = window.getComputedStyle(el);
@@ -131,6 +143,8 @@ export const fixTailwindColors = (rootElement) => {
       }
     }
   });
+
+  return rootElement;
 };
 
 /**
@@ -201,6 +215,3 @@ export const dataURLtoFile = (dataUrl, fileName) => {
 
   return new File([u8arr], fileName, { type: mime });
 };
-
-// In Helper You Will Get Multiple Helper Function Like Wise AS It is Explained Breifly On the top of Each So Go Through
-// To Get Better Knowledge .... 
