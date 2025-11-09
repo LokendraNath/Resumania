@@ -11,7 +11,7 @@ export const ThemeSelector = ({
   selectedTheme,
   setSelectedTheme,
   resumeData,
-  onClose,
+  onClose, // Yeh prop ab optional hai
 }) => {
   const resumeRef = useRef(null);
   const [baseWidth, setBaseWidth] = useState(800);
@@ -27,7 +27,10 @@ export const ThemeSelector = ({
 
   const handleThemeSelector = () => {
     setSelectedTheme(selectedTemplate.theme);
-    onClose();
+    // Safe check for onClose function
+    if (onClose && typeof onClose === "function") {
+      onClose();
+    }
   };
 
   const updateBaseWidth = () => {
