@@ -38,9 +38,6 @@ const LandingPage = () => {
       <header className={landingPageStyles.header}>
         <div className={landingPageStyles.headerContainer}>
           <div className={landingPageStyles.logoContainer}>
-            <div className={landingPageStyles.logoIcon}>
-              <BrickWall className={landingPageStyles.logoIconInner} />
-            </div>
             <span className={landingPageStyles.logoText}>Resumania</span>
           </div>
           {/* Mobile Menu BTN */}
