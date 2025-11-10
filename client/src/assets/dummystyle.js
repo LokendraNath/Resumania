@@ -13,7 +13,7 @@ export const landingPageStyles = {
     "w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-200",
   logoIconInner: "w-5 h-5 text-white",
   logoText:
-    "text-xl sm:text-2xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent",
+    "text-xl sm:text-4xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent",
   mobileMenuButton:
     "md:hidden p-2 rounded-xl hover:bg-blue-50 transition-colors",
   mobileMenuIcon: "text-blue-600",
@@ -38,7 +38,7 @@ export const landingPageStyles = {
   mobileDashboardButton:
     "w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
   mobileAuthButton:
-    "w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
+    "w-full px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
   // Main content
   main: "pt-24",
 
@@ -61,10 +61,10 @@ export const landingPageStyles = {
     "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-violet-200",
   primaryButtonOverlay:
     "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity",
-  primaryButtonContent: "relative flex items-center gap-2 sm:gap-3",
+  primaryButtonContent: "relative flex items-center gap-2 sm:gap-3 text-xl",
   primaryButtonIcon: "group-hover:translate-x-1 transition-transform",
   secondaryButton:
-    "px-8 sm:px-10 py-3 sm:py-4 border-2 border-blue-500 text-blue-500 font-bold rounded-2xl hover:bg-blue-50 transition-all",
+    "px-8 sm:px-10 py-3 text-lg sm:py-4 border-2 border-blue-500 text-blue-500 font-bold rounded-2xl hover:bg-blue-50 transition-all",
 
   // Stats
   statsContainer:
