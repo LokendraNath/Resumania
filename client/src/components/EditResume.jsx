@@ -802,8 +802,10 @@ const EditResume = () => {
 
     // Create a clone and convert oklch colors for PDF generation
     const pdfClone = convertOklchToRgb(element);
+    // Force A4 width for consistent PDF output (use mm unit so html2pdf/jsPDF maps correctly)
     pdfClone.style.position = "relative";
-    pdfClone.style.width = getComputedStyle(element).width;
+    pdfClone.style.width = "210mm";
+    pdfClone.style.maxWidth = "210mm";
 
     // Inline computed styles (so external CSS and variables are preserved)
     const inlineAllStyles = (root) => {
@@ -879,7 +881,8 @@ const EditResume = () => {
           },
           jsPDF: {
             unit: "mm",
-            format: "a4",
+            // Use explicit A4 dimensions in mm to avoid format ambiguities
+            format: [210, 297],
             orientation: "portrait",
           },
           pagebreak: {

@@ -54,7 +54,7 @@ export const ThemeSelector = ({
         <Tabs tabs={TAB_DATA} activeTab={tabValue} setActiveTab={setTabValue} />
 
         <button
-          className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black rounded-2xl hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+          className="w-full sm:w-auto flex items-center justify-center gap-3 px-3 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black rounded-2xl hover:scale-105 transition-all shadow-lg hover:shadow-xl text-sm"
           onClick={handleThemeSelector}
         >
           <Check size={18} /> Apply Changes
