@@ -30,7 +30,7 @@ export const AdditionalInfoForm = ({
       {/* Languages Section */}
       <div className="mb-10">
         <h3 className={additionalInfoStyles.sectionHeading}>
-          <div className={additionalInfoStyles.dotViolet}></div>
+          <div className={additionalInfoStyles.dotblue}></div>
           Languages
         </h3>
         <div className="space-y-6">

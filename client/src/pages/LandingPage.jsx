@@ -149,7 +149,7 @@ const LandingPage = () => {
                   {
                     value: "5K+",
                     label: "Resumes Created",
-                    gradient: "from-violet-600 to-fuchsia-600",
+                    gradient: "from-blue-600 to-cyan-600",
                   },
                   {
                     value: "4.6★",
@@ -421,7 +421,7 @@ const LandingPage = () => {
                   description:
                     "Create professional resumes in under 5 min with our streamlined process",
                   gradient: landingPageStyles.featureIconYellow,
-                  bg: landingPageStyles.featureCardViolet,
+                  bg: landingPageStyles.featureCardblue,
                 },
                 {
                   icon: (
@@ -431,7 +431,7 @@ const LandingPage = () => {
                   description:
                     "Choose from dozens of recruiter-approved, industry-specific templates",
                   gradient: landingPageStyles.featureIconPurpul,
-                  bg: landingPageStyles.featureCardFuchsia,
+                  bg: landingPageStyles.featureCardcyan,
                 },
                 {
                   icon: <Download className={landingPageStyles.featureIcon} />,

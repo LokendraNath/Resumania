@@ -255,10 +255,10 @@ export const TemplateCard = ({ thumbnailImg, isSelected, onSelect }) => {
             </div>
           )}
           {/* Hover Effect */}
-          <div className="absolute inset-0 bg-gradient-to-t from-violet-100/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-100/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
       ) : (
-        <div className="w-full h-[200px] flex items-center flex-col justify-center bg-gradient-to-br from-blue-50 via-cyan-600 to-fuchsia-50">
+        <div className="w-full h-[200px] flex items-center flex-col justify-center bg-gradient-to-br from-blue-50 via-cyan-600 to-cyan-50">
           <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-3">
             <Edit className="text-white" size={20} />
           </div>

@@ -1,16 +1,16 @@
 export const landingPageStyles = {
   // Main container
   container:
-    "min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50",
+    "min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50",
 
   // Header styles
   header:
-    "fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-violet-100/50",
+    "fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-blue-100/50",
   headerContainer:
     "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center",
   logoContainer: "flex items-center gap-3",
   logoIcon:
-    "w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-200",
+    "w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-200",
   logoIconInner: "w-5 h-5 text-white",
   logoText:
     "text-xl sm:text-4xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent",
@@ -20,7 +20,7 @@ export const landingPageStyles = {
 
   // Auth buttons
   desktopAuthButton:
-    "relative group px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-xl hover:shadow-violet-200",
+    "relative group px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-200",
   desktopAuthButtonText: "relative",
   desktopAuthButtonOverlay:
     "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity",
@@ -29,16 +29,16 @@ export const landingPageStyles = {
   // Mobile menu
   // Mobile menu
   mobileMenu:
-    "md:hidden bg-white/95 backdrop-blur-lg w-full fixed top-16 left-0 right-0 z-40 shadow-lg border-b border-violet-100/50 transition-all duration-300 ease-in-out",
+    "md:hidden bg-white/95 backdrop-blur-lg w-full fixed top-16 left-0 right-0 z-40 shadow-lg border-b border-blue-100/50 transition-all duration-300 ease-in-out",
   mobileMenuContainer:
     "max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4",
   mobileUserInfo: "flex flex-col gap-4 py-2",
   mobileUserWelcome:
-    "text-violet-700 font-medium text-center py-2 text-base sm:text-lg",
+    "text-blue-700 font-medium text-center py-2 text-base sm:text-lg",
   mobileDashboardButton:
-    "w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
+    "w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-200/50 transition-all",
   mobileAuthButton:
-    "w-full px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-200/50 transition-all",
+    "w-full px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-200/50 transition-all",
   // Main content
   main: "pt-24",
 
@@ -51,14 +51,14 @@ export const landingPageStyles = {
   heading: "text-3xl sm:text-4xl lg:text-6xl font-black leading-tight",
   headingText: "block text-slate-900",
   headingGradient:
-    "block bg-gradient-to-r from-blue-600 via-cyan-600 to-violet-500 bg-clip-text text-transparent",
+    "block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-500 bg-clip-text text-transparent",
   description:
     "text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-lg font-medium mb-5",
   ctaButtons: "flex flex-col sm:flex-row gap-10",
 
   // Buttons
   primaryButton:
-    "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-violet-200",
+    "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-200",
   primaryButtonOverlay:
     "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity",
   primaryButtonContent: "relative flex items-center gap-2 sm:gap-3 text-xl",
@@ -113,7 +113,7 @@ export const landingPageStyles = {
   // Feature cards
   featureCard: "group relative",
   featureCardHover:
-    "absolute -inset-2 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity blur-xl rounded-3xl from-violet-200 to-fuchsia-200",
+    "absolute -inset-2 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity blur-xl rounded-3xl from-blue-200 to-cyan-200",
   featureCardContent:
     "relative bg-gradient-to-br border border-white/50 p-6 sm:p-8 rounded-3xl hover:shadow-2xl transition-all group-hover:scale-105",
   featureIconContainer:
@@ -124,8 +124,8 @@ export const landingPageStyles = {
     "text-sm sm:text-base text-slate-600 leading-relaxed font-medium",
 
   // Feature gradients
-  featureCardViolet: "from-violet-50 to-purple-50",
-  featureCardFuchsia: "from-fuchsia-50 to-pink-50",
+  featureCardblue: "from-blue-50 to-purple-50",
+  featureCardcyan: "from-cyan-50 to-pink-50",
   featureCardOrange: "from-orange-50 to-red-50",
   featureIconYellow: "from-yellow-500 to-orange-600",
   featureIconPurpul: "from-purple-500 to-purple-600",
@@ -136,9 +136,9 @@ export const landingPageStyles = {
   ctaContainer: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center",
   ctaCard: "relative",
   ctaCardBg:
-    "absolute -inset-6 sm:-inset-8 bg-gradient-to-r from-violet-200/50 to-fuchsia-200/50 rounded-3xl blur-3xl",
+    "absolute -inset-6 sm:-inset-8 bg-gradient-to-r from-blue-200/50 to-cyan-200/50 rounded-3xl blur-3xl",
   ctaCardContent:
-    "relative bg-gradient-to-br from-white to-violet-50 border border-violet-100 rounded-3xl p-8 sm:p-16",
+    "relative bg-gradient-to-br from-white to-blue-50 border border-blue-100 rounded-3xl p-8 sm:p-16",
   ctaTitle:
     "text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4 sm:mb-6",
   ctaTitleGradient:
@@ -153,7 +153,7 @@ export const landingPageStyles = {
 
   // Footer
   footer:
-    "border-t border-violet-100 bg-gradient-to-r from-violet-50 to-fuchsia-50 py-6 sm:py-8",
+    "border-t border-blue-100 bg-gradient-to-r from-blue-50 to-cyan-50 py-6 sm:py-8",
   footerContainer: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center",
   footerText: "text-sm sm:text-base text-slate-500 font-medium",
   footerHeart:
@@ -173,7 +173,7 @@ export const dashboardStyles = {
 
   // Create Button
   createButton:
-    "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-violet-200",
+    "group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-200",
   createButtonOverlay:
     "absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity",
   createButtonContent: "relative flex items-center gap-3",
@@ -181,12 +181,12 @@ export const dashboardStyles = {
   // Loading
   spinnerWrapper: "flex justify-center items-center py-12",
   spinner:
-    "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-violet-600",
+    "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600",
 
   // Empty State
   emptyStateWrapper:
     "flex flex-col items-center justify-center py-12 text-center",
-  emptyIconWrapper: "bg-violet-100 p-4 rounded-full mb-4",
+  emptyIconWrapper: "bg-blue-100 p-4 rounded-full mb-4",
   emptyTitle: "text-xl font-bold text-gray-900 mb-2",
   emptyText: "text-gray-600 max-w-md mb-6",
 
@@ -195,7 +195,7 @@ export const dashboardStyles = {
 
   // New Resume Card
   newResumeCard:
-    "flex flex-col items-center justify-center bg-gradient-to-br from-violet-50 to-blue-50 border-2 border-dashed border-violet-300 rounded-2xl p-6 cursor-pointer transition-all hover:shadow-lg hover:border-violet-500 h-full",
+    "flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-blue-50 border-2 border-dashed border-blue-300 rounded-2xl p-6 cursor-pointer transition-all hover:shadow-lg hover:border-blue-500 h-full",
   newResumeIcon:
     "w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center mb-4",
   newResumeTitle: "text-xl font-bold text-gray-900 mb-2 text-center",
@@ -225,9 +225,9 @@ export const cardStyles = {
 
   // ResumeSummaryCard styles
   resumeCard:
-    "group relative h-[360px] sm:h-[380px] lg:h-[400px] flex flex-col bg-white border border-gray-200 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:border-violet-300",
+    "group relative h-[360px] sm:h-[380px] lg:h-[400px] flex flex-col bg-white border border-gray-200 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300",
   cardBackground:
-    "absolute inset-0 bg-gradient-to-br from-violet-100 via-transparent to-fuchsia-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+    "absolute inset-0 bg-gradient-to-br from-blue-100 via-transparent to-cyan-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
   previewArea: "p-4 sm:p-6 flex-1 relative overflow-hidden",
   emptyPreview:
     "w-full h-[180px] sm:h-[200px] lg:h-[220px] flex flex-col items-center justify-center rounded-2xl",
@@ -237,7 +237,7 @@ export const cardStyles = {
   emptyPreviewSubtext: "text-gray-500 text-xs mt-1",
   infoArea: "bg-gray-50 border-t border-gray-200 p-4 sm:p-6",
   title:
-    "text-sm sm:text-base font-bold text-gray-800 truncate mb-2 group-hover:text-violet-600 transition-colors",
+    "text-sm sm:text-base font-bold text-gray-800 truncate mb-2 group-hover:text-blue-600 transition-colors",
   dateInfo: "flex items-center gap-2 text-xs text-gray-500",
 
   // Action buttons
@@ -367,17 +367,16 @@ export const commonStyles = {
 
 // AdditionalInfoForm Styles
 export const additionalInfoStyles = {
-  container: "p-8 bg-gradient-to-br from-white to-violet-50",
+  container: "p-8 bg-gradient-to-br from-white to-blue-50",
   heading: "text-2xl font-black text-slate-900 mb-8",
   sectionHeading:
     "text-lg font-bold text-slate-800 mb-6 flex items-center gap-2",
-  dotViolet:
-    "w-2 h-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full",
+  dotblue: "w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full",
   dotOrange: "w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full",
   languageItem:
-    "relative bg-white border border-violet-100 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all",
+    "relative bg-white border border-blue-100 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all",
   interestItem: "relative",
-  addButtonLanguage: "bg-gradient-to-r from-violet-500 to-fuchsia-500",
+  addButtonLanguage: "bg-gradient-to-r from-blue-500 to-cyan-500",
   addButtonInterest: "bg-gradient-to-r from-orange-500 to-red-500",
 };
 
@@ -442,12 +441,12 @@ export const workExperienceStyles = {
 export const containerStyles = {
   main: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6",
   header:
-    "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-white to-violet-50 border border-violet-100 rounded-2xl py-4 px-6 mb-6 shadow-sm",
+    "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-white to-blue-50 border border-blue-100 rounded-2xl py-4 px-6 mb-6 shadow-sm",
   grid: "grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8",
   formContainer:
-    "bg-white border border-violet-100 rounded-2xl overflow-hidden shadow-sm",
+    "bg-white border border-blue-100 rounded-2xl overflow-hidden shadow-sm",
   previewContainer:
-    "bg-white border border-violet-100 rounded-2xl overflow-hidden shadow-sm p-4",
+    "bg-white border border-blue-100 rounded-2xl overflow-hidden shadow-sm p-4",
   previewInner: "w-full max-w-[800px] mx-auto",
   modalContent: "w-[90vw] h-[80vh]",
   pdfPreview: "w-full p-4 flex justify-center",
@@ -456,23 +455,23 @@ export const containerStyles = {
 
 export const buttonStyles = {
   theme:
-    "flex items-center gap-2 px-3 sm:px-4 py-2 bg-violet-100 text-violet-700 font-bold rounded-xl hover:bg-violet-200 transition-all",
+    "flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-100 text-blue-700 font-bold rounded-xl hover:bg-blue-200 transition-all",
   delete:
     "flex items-center gap-2 px-3 sm:px-4 py-2 bg-red-100 text-red-700 font-bold rounded-xl hover:bg-red-200 transition-all",
   download:
     "flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-100 text-emerald-700 font-bold rounded-xl hover:bg-emerald-200 transition-all",
   back: "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-all text-sm",
   save: "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 text-blue-700 font-bold rounded-xl hover:bg-blue-200 transition-all text-sm",
-  next: "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg text-sm",
+  next: "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg text-sm",
   modalAction:
-    "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg text-sm",
+    "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg text-sm",
 };
 
 export const statusStyles = {
   completionBadge:
     "inline-flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm font-medium text-gray-700",
   modalBadge:
-    "inline-flex items-center gap-2 bg-violet-100 px-3 py-1 rounded-full text-sm font-medium text-violet-700",
+    "inline-flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-full text-sm font-medium text-blue-700",
   error:
     "flex items-center gap-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 px-4 py-3 rounded-xl mb-4",
 };
@@ -502,14 +501,14 @@ export const photoSelectorStyles = {
   hiddenInput: "hidden",
   placeholder: (hovered) =>
     `relative w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center bg-gray-50 border-2 border-dashed border-gray-300 rounded-full cursor-pointer transition-all duration-300 ${
-      hovered ? "hover:border-violet-500 hover:bg-violet-50" : ""
+      hovered ? "hover:border-blue-500 hover:bg-blue-50" : ""
     }`,
   cameraButton:
-    "absolute -bottom-2 -right-2 w-12 h-12 flex items-center justify-center bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full transition-all shadow-lg hover:scale-110",
+    "absolute -bottom-2 -right-2 w-12 h-12 flex items-center justify-center bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full transition-all shadow-lg hover:scale-110",
   previewWrapper: "relative group",
   previewImageContainer: (hovered) =>
     `w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg transition-all duration-300 ${
-      hovered ? "group-hover:border-violet-400" : ""
+      hovered ? "group-hover:border-blue-400" : ""
     }`,
   previewImage:
     "w-full h-full object-cover cursor-pointer group-hover:scale-110 transition-transform duration-300",
@@ -524,26 +523,25 @@ export const titleInputStyles = {
   titleText: "text-lg sm:text-xl font-bold text-gray-800",
   editButton:
     "p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all group",
-  editIcon:
-    "w-5 h-5 text-gray-600 group-hover:text-violet-600 transition-colors",
+  editIcon: "w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors",
   inputField: (focused) =>
     `text-lg sm:text-xl font-bold bg-transparent outline-none text-gray-800 border-b-2 pb-2 transition-all duration-300 ${
-      focused ? "border-violet-500" : "border-gray-300"
+      focused ? "border-blue-500" : "border-gray-300"
     }`,
   confirmButton:
-    "p-2 rounded-xl bg-violet-500 hover:bg-violet-600 text-white transition-all",
+    "p-2 rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-all",
 };
 
 export const modalStyles = {
   overlay:
     "fixed inset-0 flex items-center justify-center w-full h-full bg-black/60 backdrop-blur-sm z-50",
   container:
-    "relative flex flex-col bg-white/95 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-violet-100 max-w-[95vw] max-h-[95vh]",
+    "relative flex flex-col bg-white/95 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-blue-100 max-w-[95vw] max-h-[95vh]",
   header:
-    "flex items-center justify-between p-6 border-b border-violet-100 bg-gradient-to-r from-white to-violet-50",
+    "flex items-center justify-between p-6 border-b border-blue-100 bg-gradient-to-r from-white to-blue-50",
   title: "text-xl font-black text-slate-900",
   actionButton:
-    "flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg mr-12",
+    "flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-xl hover:scale-105 transition-all shadow-lg mr-12",
   closeButton:
     "absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-xl transition-all shadow-lg hover:scale-110 z-10",
   body: "flex-1 overflow-y-auto",

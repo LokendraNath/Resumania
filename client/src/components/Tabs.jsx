@@ -15,9 +15,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
             <span className="relative z-10">
               {tab.lable}
               {activeTab === tab.lable && (
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500 rounded-xl">
-                  
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r rounded-xl"></div>
               )}
             </span>
           </button>
