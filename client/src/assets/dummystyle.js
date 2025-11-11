@@ -3,7 +3,7 @@ export const landingPageStyles = {
   container:
     "min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50",
 
-  // Header stylesexport const UserContext = createContext(null);
+  // Header styles
   header:
     "fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-violet-100/50",
   headerContainer:
@@ -550,39 +550,32 @@ export const modalStyles = {
 };
 
 export const infoStyles = {
-  // Progress
   progressWrapper: "w-20 h-2 rounded-full bg-gray-200",
   progressBar: () => `h-full rounded-full transition-all`,
 
-  // ActionLink
   actionWrapper: "flex items-center gap-3",
   actionIconWrapper: "w-6 h-6 flex items-center justify-center rounded-full",
   actionLink:
     "text-sm font-medium underline cursor-pointer break-all text-gray-600 hover:text-emerald-600 transition-colors",
 
-  // CertificationInfo
   certContainer: "mb-4",
   certTitle: "text-base font-semibold text-gray-900",
   certRow: "flex items-center gap-2 mt-1",
   certYear: () => `text-xs font-bold text-white px-3 py-1 rounded-lg`,
   certIssuer: "text-sm text-gray-600 font-medium",
 
-  // ContactInfo
   contactRow: "flex items-center gap-3 mb-3",
   contactIconWrapper: "w-8 h-8 flex items-center justify-center rounded-lg",
   contactText: "flex-1 text-sm font-medium break-all text-gray-700",
 
-  // EducationInfo
   eduContainer: "mb-5",
   eduDegree: "text-base font-semibold pb-2 text-gray-900",
   eduInstitution: "text-sm text-gray-700 font-medium",
   eduDuration: "text-xs text-gray-500 font-medium italic mt-1",
 
-  // Language/Skill Info
   infoRow: "flex items-center justify-between mb-3",
   infoLabel: "text-sm font-semibold text-gray-900",
 
-  // Links
   linkRow: "flex items-center space-x-1 hover:text-blue-600",
 
   // ProjectInfo
